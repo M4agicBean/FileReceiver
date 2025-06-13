@@ -15,7 +15,7 @@ class MySFTPServer(asyncssh.SFTPServer):
             os.makedirs(SFTP_ROOT)
         
         username = chan.get_extra_info('username')
-        logging.info(f"[LOG SFTP] Serwer SFTP uruchomiony!")
+        logging.info(f"[LOG SFTP] SFTP server started!")
 
         super().__init__(chan, chroot=SFTP_ROOT) # type: ignore
         

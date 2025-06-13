@@ -12,18 +12,18 @@ from observers.observer import start_observation
 
 async def start_server() -> None:
     print("_______________________________________________________________________")
-    print(f"[LOG] Uruchamianie serwera na {HOST}:{PORT}...")
+    print(f"[LOG] Starting server {HOST}:{PORT}...")
     
     if not os.path.exists(SFTP_ROOT):
         os.makedirs(SFTP_ROOT)
     
     if not os.path.exists(HOST_KEY_FILE):
-        logging.info(f"[LOG] Generowanie klucza dla: {HOST_KEY_FILE}")
+        logging.info(f"[LOG] Generating keys for: {HOST_KEY_FILE}")
         key = asyncssh.generate_private_key('ssh-ed25519')
         key.write_private_key(HOST_KEY_FILE)
 
-    logging.info(f"[LOG] Uruchamianie serwera SFTP na {HOST}:{PORT}...")
-    logging.info(f"[LOG] Zalogowano użytkownika='{USERNAME}'")
+    logging.info(f"[LOG] Starting SFTP server {HOST}:{PORT}...")
+    logging.info(f"[LOG] User logged in='{USERNAME}'")
     print("_______________________________________________________________________")
 
     await asyncssh.create_server(
@@ -48,6 +48,6 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (OSError, asyncssh.Error) as exc:
-        logging.error(f'[ERROR] Błąd uruchamiania serwera: {exc}')
+        logging.error(f'[ERROR] Connection error: {exc}')
     except KeyboardInterrupt:
-        logging.info("[LOG] Serwer zatrzymany przez użytkownika.")
+        logging.info("[LOG] Connection closed")

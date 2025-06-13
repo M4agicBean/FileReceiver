@@ -6,7 +6,7 @@ from helpers.module_getter import get_action_module
 
 
 async def start_observation(path: str = SFTP_ROOT) -> None:
-    print(f"[OBSERVER] Obserwuję katalog: {path}")
+    print(f"[OBSERVER] Watching directory: {path}")
     async for changes in awatch(path):
         for change_type, file_path in changes:
             
@@ -19,7 +19,7 @@ async def start_observation(path: str = SFTP_ROOT) -> None:
                 if handler:
                     await handler(file_name, file_path)
                 else:
-                    print(f"[OBSERVER] Brak handlera dla: {file_name}")
+                    print(f"[OBSERVER] No handler: {file_name}")
                 
             elif change_type == Change.modified:
                 print(f"[OBSERVER] File modified: {file_path}")

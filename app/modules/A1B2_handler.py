@@ -2,7 +2,7 @@ from hashlib import sha256
 
 async def process_file(file_name: str, path: str) -> None:
     print("--------------------------------")
-    print(f"Nazwa pliku: {file_name}")
+    print(f"File name: {file_name}")
     
     try:
         with open(path, "rb") as f:
@@ -11,5 +11,5 @@ async def process_file(file_name: str, path: str) -> None:
         print(f"Hash: {file_hash}")
         print("--------------------------------")
     except Exception as e:
-        print(f"Błąd odczytu {e}")
+        print(f"Read error {e}")
         print("--------------------------------")
