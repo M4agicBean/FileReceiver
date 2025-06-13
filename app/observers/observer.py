@@ -5,7 +5,7 @@ from utils.utils import SFTP_ROOT
 from helpers.module_getter import get_action_module
 
 
-async def start_observation(path=SFTP_ROOT):
+async def start_observation(path: str = SFTP_ROOT) -> None:
     print(f"[OBSERVER] Obserwuję katalog: {path}")
     async for changes in awatch(path):
         for change_type, file_path in changes:

@@ -1,6 +1,7 @@
 import importlib
+from typing import Callable, Optional
 
-def get_action_module(file_name):
+def get_action_module(file_name: str) -> Optional[Callable]:
     if len(file_name) < 4:
         return None
     

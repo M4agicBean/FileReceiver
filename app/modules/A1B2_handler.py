@@ -1,6 +1,6 @@
 from hashlib import sha256
 
-async def process_file(file_name, path):
+async def process_file(file_name: str, path: str) -> None:
     print("--------------------------------")
     print(f"Nazwa pliku: {file_name}")
     

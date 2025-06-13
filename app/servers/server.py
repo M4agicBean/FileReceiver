@@ -10,7 +10,7 @@ import ssh_server, sftp_server
 from utils.utils import *
 from observers.observer import start_observation
 
-async def start_server():
+async def start_server() -> None:
     print("_______________________________________________________________________")
     print(f"[LOG] Uruchamianie serwera na {HOST}:{PORT}...")
     
@@ -23,7 +23,7 @@ async def start_server():
         key.write_private_key(HOST_KEY_FILE)
 
     logging.info(f"[LOG] Uruchamianie serwera SFTP na {HOST}:{PORT}...")
-    logging.info(f"[LOG] Zalogowano użytkownika='{USERNAME}' z hasłem='{PASSWORD}'")
+    logging.info(f"[LOG] Zalogowano użytkownika='{USERNAME}'")
     print("_______________________________________________________________________")
 
     await asyncssh.create_server(
@@ -36,7 +36,7 @@ async def start_server():
     
     await asyncio.get_event_loop().create_future()
 
-async def main():
+async def main() -> None:
     await asyncio.gather(
             start_server(),
             start_observation()

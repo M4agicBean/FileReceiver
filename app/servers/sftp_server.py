@@ -10,7 +10,7 @@ from utils.utils import *
 
 class MySFTPServer(asyncssh.SFTPServer):
 
-    def __init__(self, chan: asyncssh.SSHServerChannel):
+    def __init__(self, chan: asyncssh.SSHServerChannel) -> None:
         if not os.path.exists(SFTP_ROOT):
             os.makedirs(SFTP_ROOT)
         
